@@ -20,6 +20,9 @@ class PlayGameUseCase
     {
         /** @var Game $game */
         $game = $this->repository->find(Game::class, $game_id);
+        if (!$game) {
+            return ['error' => 'Game not found.'];
+        }
         $game->play($player, $position -1); // -1 because the board is 0 indexed
         $this->repository->save($game);
 
