@@ -1,8 +1,7 @@
 <?php
 
-/**
- * Player Entity
- */
+namespace Cbatista8a\Tris\Domain\Entities;
+
 class Player
 {
     private int $id;

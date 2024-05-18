@@ -1,9 +1,12 @@
 <?php
 
+namespace Cbatista8a\Tris\Domain\Entities;
+
 class Board
 {
     private int $id;
-    private array $matrix = [1,2,3,4,5,6,7,8,9];
+    private array $matrix = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
     public function __construct(int $id)
     {
         $this->id = $id;

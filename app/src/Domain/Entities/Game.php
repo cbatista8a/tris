@@ -1,5 +1,9 @@
 <?php
 
+namespace Cbatista8a\Tris\Domain\Entities;
+
+use RuntimeException;
+
 class Game
 {
     private int $id;
@@ -7,7 +11,7 @@ class Game
     private Player $player1;
     private Player $player2;
 
-    private int $last_player_id;
+    private int $last_player_id = 0;
     private array $winning_positions = [
         [0, 1, 2],
         [3, 4, 5],
@@ -25,11 +29,6 @@ class Game
         $this->board = $board;
         $this->player1 = $player1;
         $this->player2 = $player2;
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
     }
 
     public function getBoard(): Board
@@ -57,6 +56,11 @@ class Game
         }
         $this->board->updateMatrix($position, $player->getSymbol());
         $this->last_player_id = $player->getId();
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
     }
 
     public function checkWinner(): ?Player
