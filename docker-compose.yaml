@@ -1,0 +1,18 @@
+version: "3"
+
+services:
+  app:
+    container_name: tris
+    build: .
+    volumes:
+      - ./app:/var/www/html
+      - ./docker/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./xdebug:/tmp/xdebug
+    ports:
+        - "8080:80"
+
+
+# create default network
+networks:
+  default:
+    driver: bridge
