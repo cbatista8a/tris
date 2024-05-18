@@ -88,4 +88,9 @@ class Game
         // return true if all values are not integers
         return !array_filter($values, 'is_int');
     }
+
+    public function getLastPlayerId(): int
+    {
+        return $this->last_player_id;
+    }
 }
