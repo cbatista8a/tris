@@ -6,9 +6,9 @@ interface RepositoryInterface
 {
     public function save(EntityInterface $entity);
 
-    public function find($id): ?EntityInterface;
+    public function find(string $class_name,int $id): ?EntityInterface;
 
-    public function findAll(): array;
+    public function findAll(string $class_name): array;
 
     public function remove(EntityInterface $entity);
 }

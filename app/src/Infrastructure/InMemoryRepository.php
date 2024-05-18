@@ -10,21 +10,21 @@ class InMemoryRepository implements RepositoryInterface
 
     public function save(EntityInterface $entity): void
     {
-        $_SESSION['games'][$entity->getId()] = $entity;
+        $_SESSION[get_class($entity)][$entity->getId()] = $entity;
     }
 
-    public function find($id): ?EntityInterface
+    public function find(string $class_name,int $id): ?EntityInterface
     {
-        return $_SESSION['games'][$id] ?? null;
+        return $_SESSION[$class_name][$id] ?? null;
     }
 
-    public function findAll(): array
+    public function findAll(string $class_name): array
     {
-        return $_SESSION['games'];
+        return $_SESSION[$class_name];
     }
 
     public function remove(EntityInterface $entity): void
     {
-        unset($_SESSION['games'][$entity->getId()]);
+        unset($_SESSION[get_class($entity)][$entity->getId()]);
     }
 }
