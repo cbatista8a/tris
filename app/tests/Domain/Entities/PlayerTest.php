@@ -1,7 +1,8 @@
 <?php
 
-namespace Cbatista8a\Tris\Domain\Entities;
+namespace Cbatista8a\Tris\Tests\Domain\Entities;
 
+use Cbatista8a\Tris\Domain\Entities\Player;
 use Exception;
 use PHPUnit\Framework\TestCase;
 
