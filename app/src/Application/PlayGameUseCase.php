@@ -28,6 +28,7 @@ class PlayGameUseCase
             'board' => $game->getBoard()->getMatrix(),
             'has_winner' => $checkWinner !== null,
             'winner' => $checkWinner,
+            'is_tie' => $game->isTie(),
         ];
     }
 }
