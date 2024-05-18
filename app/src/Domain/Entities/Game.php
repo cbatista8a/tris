@@ -27,6 +27,7 @@ class Game
     {
         $this->id = $id;
         $this->board = $board;
+        $this->assertPlayersHaveDifferentSymbols($player1, $player2);
         $this->player1 = $player1;
         $this->player2 = $player2;
     }
@@ -51,9 +52,7 @@ class Game
      */
     public function play(Player $player, int $position): void
     {
-        if ($this->last_player_id === $player->getId()) {
-            throw new RuntimeException("It's not your turn");
-        }
+        $this->assertIsThePlayerTurn($player);
         $this->board->updateMatrix($position, $player->getSymbol());
         $this->last_player_id = $player->getId();
     }
@@ -92,5 +91,28 @@ class Game
     public function getLastPlayerId(): int
     {
         return $this->last_player_id;
+    }
+
+    /**
+     * @param Player $player1
+     * @param Player $player2
+     * @return void
+     */
+    private function assertPlayersHaveDifferentSymbols(Player $player1, Player $player2): void
+    {
+        if ($player1->getSymbol() === $player2->getSymbol()) {
+            throw new RuntimeException('Players cannot have the same symbol');
+        }
+    }
+
+    /**
+     * @param Player $player
+     * @return void
+     */
+    private function assertIsThePlayerTurn(Player $player): void
+    {
+        if ($this->last_player_id === $player->getId()) {
+            throw new RuntimeException("It's not your turn");
+        }
     }
 }
