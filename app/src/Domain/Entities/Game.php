@@ -2,9 +2,10 @@
 
 namespace Cbatista8a\Tris\Domain\Entities;
 
+use Cbatista8a\Tris\Domain\Interfaces\EntityInterface;
 use RuntimeException;
 
-class Game
+class Game implements EntityInterface
 {
     private int $id;
     private Board $board;

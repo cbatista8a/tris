@@ -2,7 +2,9 @@
 
 namespace Cbatista8a\Tris\Domain\Entities;
 
-class Player
+use Cbatista8a\Tris\Domain\Interfaces\EntityInterface;
+
+class Player implements EntityInterface
 {
     private int $id;
 

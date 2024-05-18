@@ -2,9 +2,10 @@
 
 namespace Cbatista8a\Tris\Domain\Entities;
 
+use Cbatista8a\Tris\Domain\Interfaces\EntityInterface;
 use RuntimeException;
 
-class Board
+class Board implements EntityInterface
 {
     private int $id;
     private array $matrix = [1, 2, 3, 4, 5, 6, 7, 8, 9];
