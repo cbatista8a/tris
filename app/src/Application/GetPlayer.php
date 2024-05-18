@@ -15,7 +15,7 @@ class GetPlayer
         $this->repository = $repository;
     }
 
-    public function __invoke(int $player_id): Player
+    public function __invoke(int $player_id): ?Player
     {
         /** @var Player $player */
         $player = $this->repository->find(Player::class, $player_id);

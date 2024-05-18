@@ -22,9 +22,12 @@ class PlayGameController
         if (!isset($_GET['player_id'], $_GET['game_id'], $_GET['position'])) {
             return ['error' => 'Invalid request, missing parameters.'];
         }
-        $player = (new GetPlayer($this->repository))($_GET['player_id']);
         $game_id = $_GET['game_id'];
         $position = $_GET['position'];
+        $player = (new GetPlayer($this->repository))($_GET['player_id']);
+        if (!$player) {
+            return ['error' => 'Player not found.'];
+        }
         try {
             return (new PlayGameUseCase($this->repository))($game_id, $player, $position);
         } catch (Exception $e) {
